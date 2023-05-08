@@ -12,11 +12,11 @@ export BREW_ROOT=${BREW_ROOT:-"/opt/homebrew"}
 
 ## zplug
 export ZPLUG_HOME=$BREW_ROOT/opt/zplug
-source $ZPLUG_HOME/init.zsh
-zplug "modules/directory", from:prezto
-zplug "modules/osx", from:prezto, if:"[[ $OSTYPE == *darwin* ]]"
-if ! zplug check --verbose; then zplug install;fi
-zplug load #--verbose
+# source $ZPLUG_HOME/init.zsh
+# zplug "modules/directory", from:prezto
+# zplug "modules/osx", from:prezto, if:"[[ $OSTYPE == *darwin* ]]"
+# if ! zplug check --verbose; then zplug install;fi
+# zplug load #--verbose
 
 # ---------------------------------------- #
 # Path Settings
@@ -67,7 +67,7 @@ export PATH=$BREW_ROOT/opt/git/bin:$PATH
 # ---------------------------------------- #
 
 ## 自動補完の有効化
-autoload -U promptinit; promptinit
+# autoload -U promptinit; promptinit
 
 ## プロンプトの設定
 PROMPT="%F{008}%* %F{002}%n %F{006}%c
@@ -111,4 +111,4 @@ alias vst='vagrant status'
 alias vsh='vagrant ssh'
 
 # Docker aliases
-alias dc='docker compose'
+alias dc='finch compose'
