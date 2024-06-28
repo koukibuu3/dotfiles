@@ -10,54 +10,18 @@
 ## Homebrew
 export BREW_ROOT=${BREW_ROOT:-"/opt/homebrew"}
 
-## zplug
-export ZPLUG_HOME=$BREW_ROOT/opt/zplug
-# source $ZPLUG_HOME/init.zsh
-# zplug "modules/directory", from:prezto
-# zplug "modules/osx", from:prezto, if:"[[ $OSTYPE == *darwin* ]]"
-# if ! zplug check --verbose; then zplug install;fi
-# zplug load #--verbose
-
 # ---------------------------------------- #
 # Path Settings
 # ---------------------------------------- #
 
-## phpenv
-export PATH=$BREW_ROOT/opt/bison/bin:$PATH
-export PATH=$BREW_ROOT/opt/libxml2/bin:$PATH
-export PATH=$BREW_ROOT/opt/bzip2/bin:$PATH
-export PATH=$BREW_ROOT/opt/curl/bin:$PATH
-export PATH=$BREW_ROOT/opt/libiconv/bin:$PATH
-export PATH=$BREW_ROOT/opt/krb5/bin:$PATH
-export PATH=$BREW_ROOT/opt/openssl@1.1/bin:$PATH
-export PATH=$BREW_ROOT/opt/icu4c/bin:$PATH
-export PATH=$BREW_ROOT/opt/tidy-html5/lib:$PATH
-export PKG_CONFIG_PATH=$BREW_ROOT/opt/krb5/lib/pkgconfig:$PKG_CONFIG_PATH
-export PKG_CONFIG_PATH=$BREW_ROOT/opt/icu4c/lib/pkgconfig:$PKG_CONFIG_PATH
-export PKG_CONFIG_PATH=$BREW_ROOT/opt/libedit/lib/pkgconfig:$PKG_CONFIG_PATH
-export PKG_CONFIG_PATH=$BREW_ROOT/opt/libjpeg/lib/pkgconfig:$PKG_CONFIG_PATH
-export PKG_CONFIG_PATH=$BREW_ROOT/opt/libpng/lib/pkgconfig:$PKG_CONFIG_PATH
-export PKG_CONFIG_PATH=$BREW_ROOT/opt/libxml2/lib/pkgconfig:$PKG_CONFIG_PATH
-export PKG_CONFIG_PATH=$BREW_ROOT/opt/libzip/lib/pkgconfig:$PKG_CONFIG_PATH
-export PKG_CONFIG_PATH=$BREW_ROOT/opt/oniguruma/lib/pkgconfig:$PKG_CONFIG_PATH
-export PKG_CONFIG_PATH=$BREW_ROOT/opt/openssl@1.1/lib/pkgconfig:$PKG_CONFIG_PATH
-export PKG_CONFIG_PATH=$BREW_ROOT/opt/tidy-html5/lib/pkgconfig:$PKG_CONFIG_PATH
-export PHP_RPATHS=$BREW_ROOT/opt/zlib/lib:$PHP_RPATHS
-export PHP_RPATHS=$BREW_ROOT/opt/bzip2/lib:$PHP_RPATHS
-export PHP_RPATHS=$BREW_ROOT/opt/curl/lib:$PHP_RPATHS
-export PHP_RPATHS=$BREW_ROOT/opt/libiconv/lib:$PHP_RPATHS
-export PHP_RPATHS=$BREW_ROOT/opt/libedit/lib:$PHP_RPATHS
-export PHP_BUILD_CONFIGURE_OPTS="--with-bz2=$BREW_ROOT/opt/bzip2 --with-iconv=$BREW_ROOT/opt/libiconv --with-tidy=$BREW_ROOT/opt/tidy-html5 --with-external-pcre=$BREW_ROOT/opt/pcre2 --with-zip --enable-intl --with-pear"
+## Composer
+export PATH=$HOME/.composer/vendor/bin:$PATH
 
 ## PostgreSQL
 export PATH=/opt/homebrew/opt/postgresql@13/bin:$PATH
 export LDFLAGS=-L/opt/homebrew/opt/postgresql@13/lib
 export CPPFLAGS=-I/opt/homebrew/opt/postgresql@13/include
 export PKG_CONFIG_PATH=/opt/homebrew/opt/postgresql@13/lib/pkgconfig
-
-## Go
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
 
 ## Git
 export PATH=$BREW_ROOT/opt/git/bin:$PATH
@@ -66,12 +30,63 @@ export PATH=$BREW_ROOT/opt/git/bin:$PATH
 # Other Settings
 # ---------------------------------------- #
 
-## 自動補完の有効化
-# autoload -U promptinit; promptinit
+# Zinit
+zinit light zsh-users/zsh-syntax-highlighting
+zplugin ice atload'!_zsh_git_prompt_precmd_hook' lucid
+zplugin load woefe/git-prompt.zsh
 
-## プロンプトの設定
+# # Theming variables for primary prompt
+# ZSH_THEME_GIT_PROMPT_PREFIX="["
+# ZSH_THEME_GIT_PROMPT_SUFFIX="] "
+# ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
+# ZSH_THEME_GIT_PROMPT_DETACHED="%{$fg_bold[cyan]%}:"
+# ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
+# ZSH_THEME_GIT_PROMPT_UPSTREAM_SYMBOL="%{$fg_bold[yellow]%}⟳ "
+# ZSH_THEME_GIT_PROMPT_UPSTREAM_NO_TRACKING="%{$fg_bold[red]%}!"
+# ZSH_THEME_GIT_PROMPT_UPSTREAM_PREFIX="%{$fg[red]%}(%{$fg[yellow]%}"
+# ZSH_THEME_GIT_PROMPT_UPSTREAM_SUFFIX="%{$fg[red]%})"
+# ZSH_THEME_GIT_PROMPT_BEHIND="↓"
+# ZSH_THEME_GIT_PROMPT_AHEAD="↑"
+# ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[red]%}✖"
+# ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}●"
+# ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg[red]%}✚"
+# ZSH_THEME_GIT_PROMPT_UNTRACKED="…"
+# ZSH_THEME_GIT_PROMPT_STASHED="%{$fg[blue]%}⚑"
+# ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
+
+# # Theming variables for the secondary prompt
+# ZSH_THEME_GIT_PROMPT_SECONDARY_PREFIX=""
+# ZSH_THEME_GIT_PROMPT_SECONDARY_SUFFIX=""
+# ZSH_THEME_GIT_PROMPT_TAGS_SEPARATOR=", "
+# ZSH_THEME_GIT_PROMPT_TAGS_PREFIX="🏷 "
+# ZSH_THEME_GIT_PROMPT_TAGS_SUFFIX=""
+# ZSH_THEME_GIT_PROMPT_TAG="%{$fg_bold[magenta]%}"
+
+# setopt prompt_subst #プロンプト表示する度に変数を展開
+
+# precmd () {
+#   if [ -n "$(git status --short 2>/dev/null)" ];then
+#     export GIT_HAS_DIFF="✗"
+#     export GIT_NON_DIFF=""
+#   else
+#     export GIT_HAS_DIFF=""
+#     export GIT_NON_DIFF="✔"
+#   fi
+#   # git管理されているか確認
+#   git status --porcelain >/dev/null 2>&1
+#   if [ $? -ne 0 ];then
+#     export GIT_HAS_DIFF=""
+#     export GIT_NON_DIFF=""
+#   fi
+#   export BRANCH_NAME=$(git branch --show-current 2>/dev/null)
+# }
+
+# プロンプトの設定
 PROMPT="%F{008}%* %F{002}%n %F{006}%c
 %# %f"
+
+# PROMPT=${PROMPT}'%F{green}  ${BRANCH_NAME} ${GIT_NON_DIFF}%F{red}${GIT_HAS_DIFF} 
+# %f$ '
 
 # TAB補完時にハイライト表示させる
 zstyle ':completion:*' menu select
@@ -102,7 +117,8 @@ alias gsh='git push origin'
 alias gll='git pull origin'
 alias gre='git rebase'
 alias gme='git merge'
-alias glo='git log --pretty=short --graph'
+alias glo='git log --pretty=short --graph -3'
+alias gcp='git branch --show-current | tr -d "\n" | pbcopy'
 
 # Vagrant aliases
 alias vup='vagrant up'
@@ -111,4 +127,4 @@ alias vst='vagrant status'
 alias vsh='vagrant ssh'
 
 # Docker aliases
-alias dc='finch compose'
+alias dc='docker compose'
