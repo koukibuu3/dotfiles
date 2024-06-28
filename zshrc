@@ -35,6 +35,9 @@ zinit light zsh-users/zsh-syntax-highlighting
 zplugin ice atload'!_zsh_git_prompt_precmd_hook' lucid
 zplugin load woefe/git-prompt.zsh
 
+zinit ice pick"async.zsh" src"pure.zsh"
+zinit light sindresorhus/pure
+
 # # Theming variables for primary prompt
 # ZSH_THEME_GIT_PROMPT_PREFIX="["
 # ZSH_THEME_GIT_PROMPT_SUFFIX="] "
@@ -82,8 +85,8 @@ zplugin load woefe/git-prompt.zsh
 # }
 
 # プロンプトの設定
-PROMPT="%F{008}%* %F{002}%n %F{006}%c
-%# %f"
+# PROMPT="%F{008}%* %F{002}%n %F{006}%c
+# %# %f"
 
 # PROMPT=${PROMPT}'%F{green}  ${BRANCH_NAME} ${GIT_NON_DIFF}%F{red}${GIT_HAS_DIFF} 
 # %f$ '
