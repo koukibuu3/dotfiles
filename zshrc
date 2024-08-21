@@ -131,3 +131,6 @@ alias vsh='vagrant ssh'
 
 # Docker aliases
 alias dc='docker compose'
+
+# pnpm
+alias pn='pnpm'
