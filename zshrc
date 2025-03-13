@@ -24,19 +24,25 @@ export PATH=$BREW_ROOT/opt/git/bin:$PATH
 # Other Settings
 # ---------------------------------------- #
 
-# Zinit
-zinit light zsh-users/zsh-syntax-highlighting
-zplugin ice atload'!_zsh_git_prompt_precmd_hook' lucid
-zplugin load woefe/git-prompt.zsh
+# # Zinit
+# zinit light zsh-users/zsh-syntax-highlighting
+# zplugin ice atload'!_zsh_git_prompt_precmd_hook' lucid
+# zplugin load woefe/git-prompt.zsh
 
-zinit ice pick"async.zsh" src"pure.zsh"
-zinit light sindresorhus/pure
+# zinit ice pick"async.zsh" src"pure.zsh"
+# zinit light sindresorhus/pure
+
+eval "$(starship init zsh)"
 
 # TAB補完時にハイライト表示させる
 zstyle ':completion:*' menu select
 
 # 重複をコマンド履歴に記録しない
 setopt hist_ignore_dups
+
+# コマンド履歴の保存数
+HISTSIZE=30000
+SAVEHIST=30000
 
 # anyenv
 eval "$(anyenv init -)"

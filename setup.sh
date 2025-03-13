@@ -3,8 +3,8 @@
 # Homebrew のインストール
 . scripts/homebrew/install_brew.sh
 
-# zinit のインストール
-. scripts/zsh/install_zinit.sh
+# # zinit のインストール
+# . scripts/zsh/install_zinit.sh
 
 # zshrc にカスタム設定を追加
 . scripts/zsh/add_custom_config_to_zshrc.sh
