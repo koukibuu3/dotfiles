@@ -29,3 +29,6 @@
 
 # Homebrew Cask パッケージのインストール
 . scripts/homebrew/install_brew_cask_packages.sh
+
+# Karabiner-Elements の設定ファイルを追加
+. scripts/karabiner/add_complex_modifications.sh
