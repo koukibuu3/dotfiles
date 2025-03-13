@@ -17,6 +17,7 @@ brew_cask_packages=(
   google-chrome
   notion
   font-commit-mono
+  font-commit-mono-nerd-font
 )
 for package in ${brew_cask_packages[@]}; do
   if brew list --cask $package &>/dev/null; then
