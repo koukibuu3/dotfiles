@@ -1,6 +1,8 @@
 # !/bin/zsh
 
 # Add plugins to anyenv
+anyenv install --init
+source ~/.zshrc
 if [ ! -d "$(anyenv root)/plugins" ]; then
   echo "Adding plugins to anyenv..."
   echo "Creating plugins directory, $(anyenv root)/plugins"

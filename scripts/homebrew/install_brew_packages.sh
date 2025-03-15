@@ -5,6 +5,7 @@ echo "Installing brew packages...\n"
 brew_packages=(
   git
   anyenv
+  starship
   deno
   jq
 )

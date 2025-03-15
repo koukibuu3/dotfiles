@@ -15,10 +15,7 @@
 # Homebrew パッケージのインストール
 . scripts/homebrew/install_brew_packages.sh
 
-# anyenv のインストール
-. scripts/anyenv/install_anyenv.sh
-
-# anyenv にプラグインを追加
+# anyenv の初期設定とプラグイン追加
 . scripts/anyenv/add_plugins_to_anyenv.sh
 
 # nodenv のインストール

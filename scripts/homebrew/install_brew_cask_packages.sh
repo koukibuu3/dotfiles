@@ -3,22 +3,27 @@
 # Install brew cask packages
 echo "Installing brew cask packages...\n"
 brew_cask_packages=(
-  cursor
-  obsidian
-  raycast
-  warp
-  amazon-q
   karabiner-elements
-  google-japanese-ime
+  raycast
+  google-chrome
+  arc
+  obsidian
+  iterm2
+  amazon-q
   figma
   docker
   slack
-  arc
-  google-chrome
   notion
+  google-japanese-ime
   font-commit-mono
   font-commit-mono-nerd-font
+  visual-studio-code
+  cursor
 )
+
+# Install rosetta
+softwareupdate --install-rosetta
+
 for package in ${brew_cask_packages[@]}; do
   if brew list --cask $package &>/dev/null; then
     echo "\033[33m🚧WARNING:\033[0m $package is already installed.\n"

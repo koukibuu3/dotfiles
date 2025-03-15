@@ -35,7 +35,7 @@ export PATH=$BREW_ROOT/opt/git/bin:$PATH
 eval "$(starship init zsh)"
 
 # TAB補完時にハイライト表示させる
-zstyle ':completion:*' menu select
+# zstyle ':completion:*' menu select
 
 # 重複をコマンド履歴に記録しない
 setopt hist_ignore_dups
@@ -86,3 +86,4 @@ alias pn='pnpm'
 # Other
 alias c='clear'
 alias h='history'
+alias code='cursor'
