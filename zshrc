@@ -70,6 +70,7 @@ alias gre='git rebase'
 alias gme='git merge'
 alias glo='git log --pretty=short --graph -3'
 alias gcp='git branch --show-current | tr -d "\n" | pbcopy'
+alias gsw='git branch | fzf | xargs git switch'
 
 # Vagrant aliases
 alias vup='vagrant up'
