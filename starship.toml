@@ -2,7 +2,7 @@
 
 # 2行プロンプト + 右側に言語/時刻
 format = """
-[╭─](#9c9c9c)$os$username$hostname$directory$git_branch$git_state$git_status$cmd_duration$fill$nodejs$python$ruby$golang$rust$php$bun$deno$docker_context$kubernetes$aws$time
+[╭─](#9c9c9c)$os$username$hostname$directory$git_branch$git_state$git_status$cmd_duration$fill$nodejs$python$ruby$golang$rust$php$bun$deno$docker_context$kubernetes$aws${custom.aws_sso}$time
 [╰─](#9c9c9c)$character """
 
 add_newline = true
@@ -133,9 +133,20 @@ style = "#9b59b6"
 format = '[$symbol$context( \($namespace\))]($style) '
 
 [aws]
-symbol = " "
+disabled = true
+
+[custom.aws_sso]
+description = "AWS SSO login status"
+command = '''
+expiry=$(jq -r '.expiresAt // empty' ~/.aws/sso/cache/*.json 2>/dev/null | sort -r | head -1)
+now=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+if [ -n "$expiry" ] && [ "$now" \< "$expiry" ]; then echo "✓"; else echo "✗"; fi
+'''
+when = '''[ -n "$AWS_PROFILE" ] || [ -d ~/.aws/sso/cache ]'''
+shell = ["bash", "--noprofile", "--norc"]
+symbol = ""
+format = '[$symbol sso:$output]($style) '
 style = "#e67e22"
-format = '[$symbol($profile )(\($region\) )]($style)'
 
 [os]
 disabled = true
