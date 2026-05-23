@@ -1,0 +1,144 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# 2行プロンプト + 右側に言語/時刻
+format = """
+[╭─](#9c9c9c)$os$username$hostname$directory$git_branch$git_state$git_status$cmd_duration$fill$nodejs$python$ruby$golang$rust$php$bun$deno$docker_context$kubernetes$aws$time
+[╰─](#9c9c9c)$character """
+
+add_newline = true
+command_timeout = 500
+
+[fill]
+symbol = " "
+
+[character]
+success_symbol = "[❯](bold #d35400)"
+error_symbol = "[❯](bold #c0392b)"
+vimcmd_symbol = "[❮](bold #1abc9c)"
+
+[directory]
+style = "bold #d35400"
+truncation_length = 5
+truncate_to_repo = false
+truncation_symbol = "…/"
+read_only = " 󰌾"
+read_only_style = "#c0392b"
+home_symbol = "~"
+format = "[$path]($style)[$read_only]($read_only_style) "
+
+[git_branch]
+symbol = " "
+style = "bold #1abc9c"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "bold #f1c40f"
+format = '([\[$all_status$ahead_behind\]]($style) )'
+conflicted = "="
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+up_to_date = ""
+untracked = "?${count}"
+stashed = "\\$${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "✘${count}"
+
+[git_state]
+style = "bold #e67e22"
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+rebase = "REBASING"
+merge = "MERGING"
+revert = "REVERTING"
+cherry_pick = "CHERRY-PICKING"
+bisect = "BISECTING"
+am = "AM"
+am_or_rebase = "AM/REBASE"
+
+[cmd_duration]
+min_time = 2000
+style = "italic #9c9c9c"
+format = "took [$duration]($style) "
+
+[time]
+disabled = false
+format = "[$time]($style) "
+time_format = "%H:%M"
+style = "#9c9c9c"
+
+[hostname]
+ssh_only = true
+style = "bold #e67e22"
+format = "[@$hostname]($style) "
+
+[username]
+show_always = false
+style_user = "#9c9c9c"
+style_root = "bold #c0392b"
+format = "[$user]($style) "
+
+# 言語: プロジェクト検出時のみ右側に表示
+[nodejs]
+symbol = " "
+style = "#1abc9c"
+format = "[$symbol($version )]($style)"
+
+[python]
+symbol = " "
+style = "#1abc9c"
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+
+[ruby]
+symbol = " "
+style = "#1abc9c"
+format = "[$symbol($version )]($style)"
+
+[golang]
+symbol = " "
+style = "#1abc9c"
+format = "[$symbol($version )]($style)"
+
+[rust]
+symbol = " "
+style = "#1abc9c"
+format = "[$symbol($version )]($style)"
+
+[php]
+symbol = " "
+style = "#1abc9c"
+format = "[$symbol($version )]($style)"
+
+[bun]
+symbol = "󰚅 "
+style = "#1abc9c"
+format = "[$symbol($version )]($style)"
+
+[deno]
+symbol = " "
+style = "#1abc9c"
+format = "[$symbol($version )]($style)"
+
+[docker_context]
+symbol = " "
+style = "#3498db"
+format = "[$symbol$context]($style) "
+only_with_files = true
+
+[kubernetes]
+disabled = false
+symbol = "⎈ "
+style = "#9b59b6"
+format = '[$symbol$context( \($namespace\))]($style) '
+
+[aws]
+symbol = " "
+style = "#e67e22"
+format = '[$symbol($profile )(\($region\) )]($style)'
+
+[os]
+disabled = true
+
+[package]
+disabled = true

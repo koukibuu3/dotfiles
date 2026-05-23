@@ -20,6 +20,9 @@ export PATH=$HOME/.composer/vendor/bin:$PATH
 ## Git
 export PATH=$BREW_ROOT/opt/git/bin:$PATH
 
+## Brew
+export PATH=$PATH=$BREW_ROOT/bin:$PATH
+
 # ---------------------------------------- #
 # Other Settings
 # ---------------------------------------- #
@@ -32,6 +35,7 @@ export PATH=$BREW_ROOT/opt/git/bin:$PATH
 # zinit ice pick"async.zsh" src"pure.zsh"
 # zinit light sindresorhus/pure
 
+export STARSHIP_CONFIG="$HOME/dotfiles/starship.toml"
 eval "$(starship init zsh)"
 
 # TAB補完時にハイライト表示させる
@@ -46,6 +50,9 @@ SAVEHIST=30000
 
 # anyenv
 eval "$(anyenv init -)"
+
+# Ctrl+S を vim 等に届ける (XOFF を無効化)
+stty -ixon
 
 # ---------------------------------------- #
 # Alias Settings
@@ -87,4 +94,5 @@ alias pn='pnpm'
 # Other
 alias c='clear'
 alias h='history'
-alias code='cursor'
+alias cc='claude --dangerously-skip-permissions'
+
