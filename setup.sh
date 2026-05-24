@@ -29,3 +29,6 @@
 
 # Karabiner-Elements の設定ファイルを追加
 . scripts/karabiner/add_complex_modifications.sh
+
+# Ghostty の設定ファイルを追加
+. scripts/ghostty/link_ghostty_config.sh

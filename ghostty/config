@@ -1,0 +1,58 @@
+# Cursor風カラーテーマ
+background = 2a2a2a
+foreground = dcdcdc
+
+cursor-color = ffffff
+cursor-style = bar
+cursor-style-blink = false
+
+selection-background = 8e4310
+selection-foreground = ffffff
+
+# ANSI palette (オレンジ系アクセントに調整)
+palette = 0=#2a2a2a
+palette = 1=#e74c3c
+palette = 2=#1abc9c
+palette = 3=#e67e22
+palette = 4=#3498db
+palette = 5=#9b59b6
+palette = 6=#16a085
+palette = 7=#dcdcdc
+palette = 8=#4a4a4a
+palette = 9=#ff6b4a
+palette = 10=#2ecc71
+palette = 11=#f39c12
+palette = 12=#5dade2
+palette = 13=#bb8fce
+palette = 14=#48c9b0
+palette = 15=#ffffff
+
+# ウィンドウ
+window-padding-x = 10
+window-padding-y = 10
+window-theme = dark
+
+# フォント
+font-family = CommitMono Nerd Font
+font-family = HackGen Console NF
+font-size = 13
+
+# macOS 設定
+macos-titlebar-style = tabs
+macos-option-as-alt = true
+
+# 終了確認をオフ (Cmd+Q で即終了)
+confirm-close-surface = false
+
+# 操作性
+copy-on-select = true
+scrollback-limit = 100000
+
+# VSCode風キーバインド (vim 用に Cmd+X を vimコマンドに変換して送信)
+keybind = cmd+s=text:\x1b:w\r
+keybind = cmd+a=text:\x1bggVG
+keybind = cmd+z=text:\x1bu
+keybind = cmd+shift+z=text:\x1b\x12
+keybind = cmd+f=text:\x1b/
+# Cmd+C/V/X はGhostty既定 (システムクリップボード) + vimの clipboard=unnamed で連携
+
