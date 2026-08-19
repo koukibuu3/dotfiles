@@ -35,3 +35,6 @@
 
 # Ghostty の設定ファイルを追加
 . scripts/ghostty/link_ghostty_config.sh
+
+# Claude Code の設定ファイルをリンク
+. scripts/claude/link_claude_config.sh

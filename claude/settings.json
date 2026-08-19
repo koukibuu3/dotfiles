@@ -1,0 +1,33 @@
+{
+  "env": {
+    "CLAUDE_CODE_AUTO_CONNECT_IDE": "false",
+    "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL": "true",
+    "CLAUDE_CODE_IDE_SKIP_VALID_CHECK": "true",
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "false",
+    "DISABLE_ERROR_REPORTING": "true",
+    "DISABLE_TELEMETRY": "true"
+  },
+  "permissions": {
+    "allow": [
+      "Skill(create-or-update-pr)",
+      "Skill(create-or-update-pr:*)"
+    ],
+    "deny": [
+      "Bash(rm:*)",
+      "Bash(git push -f)"
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "sh \"$HOME/.claude/statusline-command.sh\""
+  },
+  "enabledPlugins": {
+    "slack@claude-plugins-official": true,
+    "atlassian@claude-plugins-official": true,
+    "agent-skills@anyinc": true
+  },
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "high",
+  "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1b1f24; --sub:#5b6470; --line:#e3e6ea;
+    --high:#c62828; --mid:#e07b00; --low:#2f6fd0; --info:#6b7280; --ok:#1f8a4c;
+    --code:#f2f3f5;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:32px 20px 64px;
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",Meiryo,sans-serif;
+    line-height:1.75; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto}
+  header{margin-bottom:28px}
+  .eyebrow{font-size:12px;letter-spacing:.08em;color:var(--sub);font-weight:600}
+  h1{font-size:24px;margin:6px 0 10px;line-height:1.4}
+  h1 a{color:inherit;text-decoration:none;border-bottom:2px solid var(--line)}
+  .meta{font-size:13px;color:var(--sub)}
+  .meta b{color:var(--ink);font-weight:600}
+
+  .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 30px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .stat .n{font-size:22px;font-weight:700;line-height:1.2}
+  .stat .l{font-size:11px;color:var(--sub);font-weight:600;letter-spacing:.03em}
+  .stat.high .n{color:var(--high)} .stat.mid .n{color:var(--mid)}
+  .stat.low .n{color:var(--low)} .stat.info .n{color:var(--info)}
+
+  h2{font-size:15px;letter-spacing:.04em;color:var(--sub);margin:34px 0 12px;font-weight:700}
+
+  .item{
+    background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);
+    border-radius:10px;padding:16px 18px;margin-bottom:12px;
+  }
+  .item.high{border-left-color:var(--high)}
+  .item.mid{border-left-color:var(--mid)}
+  .item.low{border-left-color:var(--low)}
+  .item.info{border-left-color:var(--info)}
+  .item.good{border-left-color:var(--ok)}
+
+  .head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+  .badge{font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;color:#fff;white-space:nowrap}
+  .badge.high{background:var(--high)} .badge.mid{background:var(--mid)}
+  .badge.low{background:var(--low)} .badge.info{background:var(--info)}
+  .badge.good{background:var(--ok)}
+  .title{font-size:16px;font-weight:700}
+  .item p{margin:8px 0}
+  .item ul{margin:8px 0 8px 1.1em;padding:0}
+  .item li{margin:4px 0}
+
+  code{background:var(--code);border:1px solid var(--line);border-radius:4px;
+       padding:1px 5px;font-size:12.5px;
+       font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  pre{background:#1e2228;color:#e6e9ee;border-radius:8px;padding:12px 14px;overflow:auto;
+      font-size:12.5px;line-height:1.6;margin:10px 0;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  pre code{background:none;border:0;padding:0;color:inherit}
+  .path{font-size:12px;color:var(--sub);
+        font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .why{background:#fff8e6;border:1px solid #f0e0b0;border-radius:8px;padding:10px 12px;
+       font-size:13.5px;margin:10px 0}
+  .why b{color:#8a5a00}
+  .note{font-size:13.5px;color:var(--sub)}
+
+  table{width:100%;border-collapse:collapse;background:var(--card);
+        border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13.5px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#eef0f3;font-size:12px;color:var(--sub);font-weight:700}
+  tr:last-child td{border-bottom:0}
+
+  .verdict{background:#0f172a;color:#e7ecf5;border-radius:12px;padding:20px 22px;margin-top:32px}
+  .verdict .title{font-size:17px;margin-bottom:8px}
+  .verdict p{margin:6px 0;color:#c6d0e0;font-size:14px}
+  .verdict strong{color:#fff}
+  .verdict code{background:#243049;border-color:#31405c;color:#e7ecf5}
+  footer{margin-top:28px;font-size:12px;color:var(--sub)}
+  @media (max-width:640px){.summary{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">{{EYEBROW}}</div>
+  <h1>{{H1}}</h1>
+  <div class="meta">{{META}}</div>
+</header>
+
+<div class="summary">
+{{SUMMARY_STATS}}
+</div>
+
+<h2>指摘事項</h2>
+{{FINDINGS}}
+
+<h2>良い点</h2>
+{{GOOD_POINTS}}
+
+{{EXTRA_SECTION}}
+
+<div class="verdict">
+  <div class="title">総評</div>
+{{VERDICT}}
+</div>
+
+<footer>{{FOOTER}}</footer>
+
+</div>
+</body>
+</html>
