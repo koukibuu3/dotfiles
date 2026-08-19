@@ -2,3 +2,5 @@
 .env.local
 # 端末ローカルの秘密情報。実体は ~/.zshrc.local に置く（ここへ持ち込まないための保険）
 .zshrc.local
+# twg スキルの端末ローカルなインストール記録（絶対パスを含む。どのコードからも読まれない）
+.twg-install.json
