@@ -1,45 +1,23 @@
-# !bin/zsh
+#!/bin/zsh
 
-# -----------------------------
-# Initial Settings
-# -----------------------------
+# 対話シェルごとに評価される設定。
+# PATH の追加は zprofile に置く（ここに書くとネストしたシェルで PATH が膨張する）。
 
-## Macの更新後Gitが使えなくなった際に xcode-select --install を自動実行
-[[ $(git --version | grep xcrun > /dev/null) ]] && xcode-select --install
-
-## Homebrew
-export BREW_ROOT=${BREW_ROOT:-"/opt/homebrew"}
+# ネストしたシェルで PATH が伸びないように重複を除去する
+typeset -U path PATH
 
 # ---------------------------------------- #
-# Path Settings
+# Prompt
 # ---------------------------------------- #
 
-## Composer
-export PATH=$HOME/.composer/vendor/bin:$PATH
-
-## Git
-export PATH=$BREW_ROOT/opt/git/bin:$PATH
-
-## Brew
-export PATH=$PATH=$BREW_ROOT/bin:$PATH
+if command -v starship > /dev/null 2>&1; then
+  export STARSHIP_CONFIG="$HOME/dotfiles/starship.toml"
+  eval "$(starship init zsh)"
+fi
 
 # ---------------------------------------- #
-# Other Settings
+# History
 # ---------------------------------------- #
-
-# # Zinit
-# zinit light zsh-users/zsh-syntax-highlighting
-# zplugin ice atload'!_zsh_git_prompt_precmd_hook' lucid
-# zplugin load woefe/git-prompt.zsh
-
-# zinit ice pick"async.zsh" src"pure.zsh"
-# zinit light sindresorhus/pure
-
-export STARSHIP_CONFIG="$HOME/dotfiles/starship.toml"
-eval "$(starship init zsh)"
-
-# TAB補完時にハイライト表示させる
-# zstyle ':completion:*' menu select
 
 # 重複をコマンド履歴に記録しない
 setopt hist_ignore_dups
@@ -48,11 +26,17 @@ setopt hist_ignore_dups
 HISTSIZE=30000
 SAVEHIST=30000
 
+# ---------------------------------------- #
+# Other Settings
+# ---------------------------------------- #
+
 # anyenv
-eval "$(anyenv init -)"
+if command -v anyenv > /dev/null 2>&1; then
+  eval "$(anyenv init -)"
+fi
 
 # Ctrl+S を vim 等に届ける (XOFF を無効化)
-stty -ixon
+[ -t 0 ] && stty -ixon
 
 # ---------------------------------------- #
 # Alias Settings
@@ -77,13 +61,8 @@ alias gre='git rebase'
 alias gme='git merge'
 alias glo='git log --pretty=short --graph -3'
 alias gcp='git branch --show-current | tr -d "\n" | pbcopy'
-alias gsw='git branch | fzf | xargs git switch'
-
-# Vagrant aliases
-alias vup='vagrant up'
-alias vha='vagrant halt'
-alias vst='vagrant status'
-alias vsh='vagrant ssh'
+# fzf でブランチを選んで switch（gsw と衝突しないよう別名にしている）
+alias gsf='git branch | fzf | xargs git switch'
 
 # Docker aliases
 alias dc='docker compose'
@@ -95,4 +74,3 @@ alias pn='pnpm'
 alias c='clear'
 alias h='history'
 alias cc='claude --dangerously-skip-permissions'
-

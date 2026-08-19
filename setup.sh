@@ -9,6 +9,9 @@
 # zshrc にカスタム設定を追加
 . scripts/zsh/add_custom_config_to_zshrc.sh
 
+# zprofile にカスタム設定を追加（PATH 系）
+. scripts/zsh/add_custom_config_to_zprofile.sh
+
 # vimrc にカスタム設定を追加
 . scripts/vim/add_custom_config_to_vimrc.sh
 
