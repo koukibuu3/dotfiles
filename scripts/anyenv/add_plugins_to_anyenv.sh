@@ -1,6 +1,11 @@
 # !/bin/zsh
 
 # Add plugins to anyenv
+
+if ! command -v anyenv > /dev/null 2>&1; then
+  echo "\033[33m🚧WARNING:\033[0m anyenv not found. スキップします\n"
+  return 2> /dev/null || exit 0
+fi
 anyenv install --init
 source ~/.zshrc
 if [ ! -d "$(anyenv root)/plugins" ]; then

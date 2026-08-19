@@ -1,6 +1,11 @@
 # !/bin/zsh
 
 # Add plugins to nodenv
+
+if ! command -v nodenv > /dev/null 2>&1; then
+  echo "\033[33m🚧WARNING:\033[0m nodenv not found. スキップします\n"
+  return 2> /dev/null || exit 0
+fi
 if [ ! -d "$(nodenv root)/plugins" ]; then
   echo "Adding plugins to nodenv..."
   echo "Creating plugins directory, $(nodenv root)/plugins"

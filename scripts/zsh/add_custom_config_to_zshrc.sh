@@ -1,6 +1,10 @@
 # !/bin/zsh
 
 # Add custom config to zshrc if not already present
+if [ ! -f ~/.zshrc ]; then
+  touch ~/.zshrc
+fi
+
 if ! grep -q "Custom config" ~/.zshrc; then
   echo "Adding custom config to ~/.zshrc..."
   cat << 'EOF' >> ~/.zshrc

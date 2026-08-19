@@ -1,6 +1,10 @@
 # !/bin/zsh
 
 # Add custom config to vimrc if not already present
+if [ ! -f ~/.vimrc ]; then
+  touch ~/.vimrc
+fi
+
 if ! grep -q "Custom config" ~/.vimrc; then
   echo "Adding custom config to ~/.vimrc..."
   cat <<EOF >> ~/.vimrc
