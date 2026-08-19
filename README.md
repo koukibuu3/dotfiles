@@ -6,6 +6,24 @@
 sh setup.sh
 ```
 
+再実行しても安全（冪等）。既に配置済みのものは警告を出してスキップする。
+
+## セットアップの検証
+
+偽の `HOME` を使って、新規構築と差分更新が壊れていないかを確認できる。
+実インストール（`brew bundle install` / Rosetta / anyenv / Claude Code）は行わないので数秒で終わる。
+
+```sh
+zsh scripts/ci/verify_setup.sh
+```
+
+検証内容は「設定の配置」「再実行の冪等性」「シンボリックリンクであること」
+「ログインシェルで `brew` の PATH が通ること」。
+過去にこの4点で新規構築が壊れたため、その回帰テストとして置いている。
+GitHub Actions（`macos-latest`）でも同じスクリプトを回している。
+
+cask 23 個の実インストールは数 GB かかり低速かつ不安定なため CI の対象外。
+
 ## Homebrew
 
 formula と cask は `Brewfile` で管理し、`brew bundle` で導入する。

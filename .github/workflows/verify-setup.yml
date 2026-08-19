@@ -1,0 +1,21 @@
+name: verify-setup
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    # 実際に macOS で動く必要があるため macos ランナーを使う。
+    # 実インストール（brew bundle install / rosetta / anyenv / Claude Code）は行わない。
+    # cask 23 個の実インストールは数 GB かかり低速かつ不安定なため、CI の対象外。
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify setup
+        # 偽の HOME を使って新規構築・差分更新・シンボリックリンク・PATH を検証する
+        run: zsh scripts/ci/verify_setup.sh
