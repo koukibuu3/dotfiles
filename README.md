@@ -6,6 +6,25 @@
 sh setup.sh
 ```
 
+## Homebrew
+
+formula と cask は `Brewfile` で管理し、`brew bundle` で導入する。
+
+```sh
+# Brewfile の内容をインストール
+brew bundle install --file=~/dotfiles/Brewfile
+
+# 不足しているものを確認（インストールはしない）
+brew bundle check --verbose --file=~/dotfiles/Brewfile
+```
+
+`Brewfile` は「セットアップに必要な最小限」を意図したキュレーション済みのリストで、
+インストール済みの全パッケージを列挙したものではない。
+現在の環境をそのまま書き出したい場合は `brew bundle dump --force`。
+
+Rosetta 2 のインストールは brew とは無関係なので
+`scripts/homebrew/install_rosetta.sh` に分離してある（Apple Silicon のみ実行）。
+
 ## zsh
 
 `~/.zshrc` と `~/.zprofile` はツール（Kiro CLI / Docker / OrbStack / Ghostty）が

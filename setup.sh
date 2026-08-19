@@ -15,8 +15,11 @@
 # vimrc にカスタム設定を追加
 . scripts/vim/add_custom_config_to_vimrc.sh
 
-# Homebrew パッケージのインストール
-. scripts/homebrew/install_brew_packages.sh
+# Rosetta 2 のインストール
+. scripts/homebrew/install_rosetta.sh
+
+# Brewfile から formula / cask をインストール
+. scripts/homebrew/install_brew_bundle.sh
 
 # anyenv の初期設定とプラグイン追加
 . scripts/anyenv/add_plugins_to_anyenv.sh
@@ -26,9 +29,6 @@
 
 # nodenv にプラグインを追加
 . scripts/anyenv/add_plugins_to_nodenv.sh
-
-# Homebrew Cask パッケージのインストール
-. scripts/homebrew/install_brew_cask_packages.sh
 
 # Karabiner-Elements の設定ファイルを追加
 . scripts/karabiner/add_complex_modifications.sh
