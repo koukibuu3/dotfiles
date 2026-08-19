@@ -35,3 +35,7 @@ link_claude_entry settings.json
 link_claude_entry statusline-command.sh
 link_claude_entry commands
 link_claude_entry skills
+
+# グローバルの指示ファイルは CLAUDE.md しか読まれない（AGENTS.md は user スコープでは無視される）。
+# リポジトリ側と同じく実体を AGENTS.md にしておき、CLAUDE.md という名前でリンクする。
+link_claude_entry AGENTS.md CLAUDE.md
