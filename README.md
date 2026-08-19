@@ -18,9 +18,17 @@ brew bundle install --file=~/dotfiles/Brewfile
 brew bundle check --verbose --file=~/dotfiles/Brewfile
 ```
 
-`Brewfile` は「セットアップに必要な最小限」を意図したキュレーション済みのリストで、
-インストール済みの全パッケージを列挙したものではない。
+`Brewfile` は普段使う環境を再現するためのキュレーション済みリスト。
+間接依存（他の formula の依存として入るもの）は brew が解決するので書かない。
+単発の作業用ツールも入れない。
 現在の環境をそのまま書き出したい場合は `brew bundle dump --force`。
+
+`aws` は brew 管理外（公式インストーラで `/usr/local/bin/aws` に入っている）。
+`starship.toml` が AWS SSO のログイン状態表示で参照しているが、
+`brew "awscli"` を足すと二重管理になるため Brewfile には含めない。
+
+`1password` は自動更新する cask のため、アプリが入っていても
+`brew bundle check` が「要インストール」と報告することがある。
 
 Rosetta 2 のインストールは brew とは無関係なので
 `scripts/homebrew/install_rosetta.sh` に分離してある（Apple Silicon のみ実行）。
