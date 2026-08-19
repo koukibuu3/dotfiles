@@ -1,0 +1,4 @@
+.DS_Store
+.env.local
+# 端末ローカルの秘密情報。実体は ~/.zshrc.local に置く（ここへ持ち込まないための保険）
+.zshrc.local
