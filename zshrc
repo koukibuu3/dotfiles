@@ -52,7 +52,7 @@ alias g='git'
 alias gst='git status'
 alias gbr='git branch'
 alias gch='git checkout'
-alias gsw='git switch'
+# alias gsw='git switch'
 alias gco='git commit'
 alias gdd='git add'
 alias gsh='git push origin'
@@ -61,8 +61,7 @@ alias gre='git rebase'
 alias gme='git merge'
 alias glo='git log --pretty=short --graph -3'
 alias gcp='git branch --show-current | tr -d "\n" | pbcopy'
-# fzf でブランチを選んで switch（gsw と衝突しないよう別名にしている）
-alias gsf='git branch | fzf | xargs git switch'
+alias gsw='git branch | fzf | xargs git switch'
 
 # Docker aliases
 alias dc='docker compose'
