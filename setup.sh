@@ -38,3 +38,9 @@
 
 # Claude Code の設定ファイルをリンク
 . scripts/claude/link_claude_config.sh
+
+# Claude Code の marketplace 登録とプラグインのインストール
+. scripts/claude/install_plugins.sh
+
+# Claude Code の MCP サーバーを登録（要 .env.local）
+. scripts/claude/setup_mcp.sh
