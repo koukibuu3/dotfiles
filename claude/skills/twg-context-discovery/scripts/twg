@@ -2,7 +2,7 @@
 set -euo pipefail
 
 resolve_twg() {
-  printf '%s\n' "/Users/akasaka/.local/bin/twg-bin"
+  printf '%s\n' "${HOME}/.local/bin/twg-bin"
   return 0
 }
 

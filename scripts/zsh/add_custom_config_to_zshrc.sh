@@ -3,7 +3,7 @@
 # Add custom config to zshrc if not already present
 if ! grep -q "Custom config" ~/.zshrc; then
   echo "Adding custom config to ~/.zshrc..."
-  cat <<EOF >> ~/.zshrc
+  cat << 'EOF' >> ~/.zshrc
 
 # Custom config
 [[ -f "$HOME/dotfiles/zshrc" ]] && builtin source "$HOME/dotfiles/zshrc"

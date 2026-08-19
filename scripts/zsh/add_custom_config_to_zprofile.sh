@@ -9,7 +9,7 @@ fi
 
 if ! grep -q "Custom config" ~/.zprofile; then
   echo "Adding custom config to ~/.zprofile..."
-  cat << EOF >> ~/.zprofile
+  cat << 'EOF' >> ~/.zprofile
 
 # Custom config
 [[ -f "$HOME/dotfiles/zprofile" ]] && builtin source "$HOME/dotfiles/zprofile"
