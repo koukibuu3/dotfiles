@@ -77,6 +77,20 @@ Rosetta 2 のインストールは brew とは無関係なので
 `~/.zshrc.local` に置き、`~/.zshrc` から source する。
 このリポジトリには持ち込まない（`.gitignore` にも保険として入れてある）。
 
+## Zed
+
+`zed/` に置いたファイルを `~/.config/zed/` へシンボリックリンクする。
+`keymap.json` などを増やしたくなったら `zed/` に置くだけでよい。
+
+同期しないもの:
+
+- `~/.config/zed/prompts/` — LMDB のバイナリDB（`data.mdb` / `lock.mdb`）で git 管理に向かない
+- `~/Library/Application Support/Zed/` — DB・ログ・拡張の実体。端末ローカル
+
+Zed が設定を書き戻すときにファイルを差し替える実装だと、symlink が通常ファイルに
+置き換わって以降 dotfiles 側に差分が現れなくなる。
+その場合は再実行時に `differs` の警告が出るので気づける。
+
 ## Claude Code
 
 `claude/` 配下に実体を置き、`~/.claude/` からシンボリックリンクを張って共有している。

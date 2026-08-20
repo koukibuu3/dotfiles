@@ -32,6 +32,7 @@ LINK_SCRIPTS=(
   scripts/zsh/add_custom_config_to_zprofile.sh
   scripts/vim/add_custom_config_to_vimrc.sh
   scripts/ghostty/link_ghostty_config.sh
+  scripts/zed/link_zed_config.sh
   scripts/karabiner/add_complex_modifications.sh
   scripts/claude/link_claude_config.sh
 )
@@ -44,6 +45,7 @@ LINKED_PATHS=(
   .claude/skills
   .claude/CLAUDE.md
   .config/ghostty/config
+  .config/zed/settings.json
   .config/karabiner/assets/complex_modifications/karabiner_fake_vim_rule.json
 )
 
