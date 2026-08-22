@@ -25,7 +25,6 @@ brew "gh" # PR の作成に使う
 
 cask "ghostty" # scripts/ghostty/link_ghostty_config.sh が設定を配置する
 cask "orbstack" # docker コマンドの提供元。zshrc の dc エイリアスが依存
-cask "visual-studio-code"
 cask "zed" # scripts/zed/link_zed_config.sh が設定を配置する
 cask "kiro-cli"
 cask "postman"
