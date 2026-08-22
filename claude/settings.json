@@ -26,8 +26,23 @@
     "atlassian@claude-plugins-official": true,
     "agent-skills@anyinc": true
   },
+  "extraKnownMarketplaces": {
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    },
+    "anyinc": {
+      "source": {
+        "source": "github",
+        "repo": "anyinc/agent-skills"
+      }
+    }
+  },
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
-  "skipWorkflowUsageWarning": true
+  "skipWorkflowUsageWarning": true,
+  "theme": "dark-ansi"
 }
