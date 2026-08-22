@@ -1,5 +1,9 @@
 #!/bin/sh
 input=$(cat)
+
+# RunCat Neo Custom Metrics 用のスナップショットを書き出す
+echo "$input" | "$HOME/.claude/runcat-statusline.py" >/dev/null 2>&1
+
 model=$(echo "$input" | jq -r '.model.display_name // "Claude"')
 cwd=$(echo "$input" | jq -r '.workspace.current_dir // .cwd // ""')
 dir=$(basename "$cwd")
